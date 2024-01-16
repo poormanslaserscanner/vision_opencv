@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(cv_bridge)
 
-find_package(catkin REQUIRED COMPONENTS rosconsole sensor_msgs)
+find_package(catkin REQUIRED COMPONENTS rosconsole sensor_msgs opencv3_catkin)
 
 if(NOT ANDROID)
   find_package(PythonLibs)
@@ -17,12 +17,13 @@ else()
 find_package(Boost REQUIRED)
 endif()
 
-set(_opencv_version 4)
-find_package(OpenCV 4 QUIET)
-if(NOT OpenCV_FOUND)
-  message(STATUS "Did not find OpenCV 4, trying OpenCV 3")
-  set(_opencv_version 3)
-endif()
+#set(_opencv_version 4)
+#find_package(OpenCV 4 QUIET)
+#if(NOT OpenCV_FOUND)
+#  message(STATUS "Did not find OpenCV 4, trying OpenCV 3")
+#  set(_opencv_version 3)
+#endif()
+set(_opencv_version 3)
 
 find_package(OpenCV ${_opencv_version} REQUIRED
   COMPONENTS
